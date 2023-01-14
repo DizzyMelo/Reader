@@ -16,16 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.study.reader.navigation.AppScreens
 import kotlinx.coroutines.delay
 
-@Preview
 @Composable
-fun SplashScreen(navController: NavController = NavController(context = LocalContext.current)) {
+fun SplashScreen(navController: NavController) {
     val scale = remember {
         Animatable(initialValue = 0f)
     }
