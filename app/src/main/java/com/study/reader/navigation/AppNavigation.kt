@@ -8,6 +8,7 @@ import com.study.reader.screens.details.BookDetailsScreen
 import com.study.reader.screens.home.HomeScreen
 import com.study.reader.screens.login.LoginScreen
 import com.study.reader.screens.search.SearchScreen
+import com.study.reader.screens.signup.SignupScreen
 import com.study.reader.screens.splash.SplashScreen
 import com.study.reader.screens.stats.StatsScreen
 import com.study.reader.screens.update.UpdateScreen
@@ -22,10 +23,13 @@ fun AppNavigation() {
         composable(route = AppScreens.LoginScreen.name) {
             LoginScreen(navController)
         }
+        composable(route = AppScreens.SignupScreen.name) {
+            SignupScreen(navController)
+        }
         composable(route = AppScreens.HomeScreen.name) {
             HomeScreen(navController)
         }
-        composable(route = AppScreens.BookDetailsScreen.name) {
+        composable(route = AppScreens.DetailsScreen.name) {
             BookDetailsScreen(navController)
         }
         composable(route = AppScreens.SearchScreen.name) {
