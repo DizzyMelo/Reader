@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.study.reader.components.ProfileIcon
 import com.study.reader.components.ReaderAppBar
 import com.study.reader.model.MBook
 import com.study.reader.utils.AppColors
@@ -46,7 +47,7 @@ fun HomeContent(navController: NavController) {
                 .fillMaxWidth()
         ) {
             TitleSection(label = "Your reading activity right now...")
-
+            ProfileIcon(navController = navController)
         }
     }
 }
