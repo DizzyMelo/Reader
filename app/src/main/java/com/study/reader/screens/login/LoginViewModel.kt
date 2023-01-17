@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.study.reader.data.FirebaseDao
+import com.study.reader.model.MUser
 import com.study.reader.utils.Constants
 import kotlinx.coroutines.launch
 
@@ -56,14 +57,19 @@ class LoginViewModel : ViewModel() {
         }
 
     private fun createUser() {
-        val user = auth.currentUser!!
-        val userMap = hashMapOf<String, Any>()
-        userMap["user_id"] = user.uid
-        userMap["display_name"] = user.email!!.split("@").first()
+        val currentUser = auth.currentUser!!
+        val user =
+            MUser(
+                userId = currentUser.uid,
+                displayName = currentUser.email!!.split("@").first(),
+                avatarUrl = "",
+                quote = "Life is great",
+                profession = "Android Engineer"
+            ).toMap()
 
         FirebaseDao.createDocument(
             collectionName = Constants.USERS_COLLECTION_NAME,
-            documentMap = userMap,
+            documentMap = user,
             onSuccess = {
                 Log.d("FB", "createUser: user created successfully")
             },
