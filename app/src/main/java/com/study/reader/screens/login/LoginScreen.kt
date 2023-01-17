@@ -84,7 +84,7 @@ fun LoginScreen(navController: NavController, loginViewModel: LoginViewModel = v
 fun UserForm(
     loading: Boolean = false,
     isCreateAccount: Boolean = false,
-    onDone: (String, String) -> Unit = { email, password -> }
+    onDone: (String, String) -> Unit = { _, _ -> }
 ) {
     val email = rememberSaveable { mutableStateOf("") }
     val password = rememberSaveable { mutableStateOf("") }
