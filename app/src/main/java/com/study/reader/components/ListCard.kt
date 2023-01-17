@@ -43,14 +43,15 @@ fun ListCard(
         backgroundColor = Color.White,
         elevation = 6.dp,
         modifier = Modifier
-            .padding(16.dp)
+//            .padding(16.dp)
             .height(242.dp)
             .width(202.dp)
             .clickable { onClick.invoke(book.title.toString()) }
     ) {
         Column(
             modifier = Modifier.width(screenWidth.dp - (spacing * 2)),
-            horizontalAlignment = Alignment.Start
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             Row(horizontalArrangement = Arrangement.Center) {
                 AsyncImage(
@@ -89,6 +90,14 @@ fun ListCard(
                 modifier = Modifier.padding(4.dp),
                 style = MaterialTheme.typography.caption
             )
+
+            Row(
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.Bottom,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                RoundedButton(label = "Reading", radius = 70)
+            }
         }
     }
 }
