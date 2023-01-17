@@ -1,6 +1,8 @@
 package com.study.reader.components
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -36,6 +38,7 @@ fun ReaderAppBar(title: String, showProfile: Boolean = true, navController: NavC
                             .clip(shape = RoundedCornerShape(12.dp))
                             .scale(.9f)
                     )
+                    Spacer(modifier = Modifier.width(10.dp))
                 }
                 Text(
                     text = title,
@@ -53,7 +56,8 @@ fun ReaderAppBar(title: String, showProfile: Boolean = true, navController: NavC
             }) {
                 Icon(
                     imageVector = Icons.Filled.Logout,
-                    contentDescription = "Sign out"
+                    contentDescription = "Sign out",
+                    tint = Color.Green.copy(alpha = .4f)
                 )
             }
         },
