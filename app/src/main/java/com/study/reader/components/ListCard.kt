@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.study.reader.model.MBook
-import com.study.reader.screens.home.BookRating
 
 @Preview
 @Composable
