@@ -2,14 +2,14 @@ package com.study.reader.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,5 +44,24 @@ fun FABContent(onTap: () -> Unit) {
             contentDescription = "Add a book",
             tint = Color.White
         )
+    }
+}
+
+@Composable
+fun BookRating(score: Double = 4.5) {
+    Surface(
+        modifier = Modifier
+            .height(70.dp)
+            .padding(4.dp), shape = RoundedCornerShape(56.dp), elevation = 6.dp, color = Color.White
+    ) {
+        Column(modifier = Modifier.padding(4.dp)) {
+            Icon(
+                imageVector = Icons.Filled.StarBorder,
+                contentDescription = "Rating icon",
+                modifier = Modifier.padding(3.dp)
+            )
+
+            Text(text = score.toString(), style = MaterialTheme.typography.subtitle1)
+        }
     }
 }
