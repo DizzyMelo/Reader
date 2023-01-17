@@ -9,10 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.study.reader.components.FABContent
-import com.study.reader.components.ProfileIcon
-import com.study.reader.components.ReaderAppBar
-import com.study.reader.components.TitleSection
+import com.study.reader.components.*
+import com.study.reader.model.MBook
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -40,5 +38,34 @@ fun HomeContent(navController: NavController) {
             TitleSection(label = "Your reading activity right now...")
             ProfileIcon(navController = navController)
         }
+
+        ReadingNowArea(
+            navController = navController
+        )
+        
+        TitleSection(label = "Reading List")
+
+        BookListArea(
+            books = listOf(
+                MBook(
+                    id = "book_id",
+                    title = "Running",
+                    authors = "Daniel Melo",
+                    notes = "this is a great book",
+                ),
+                MBook(
+                    id = "book_id",
+                    title = "Running",
+                    authors = "Daniel Melo",
+                    notes = "this is a great book",
+                ),
+                MBook(
+                    id = "book_id",
+                    title = "Running",
+                    authors = "Daniel Melo",
+                    notes = "this is a great book",
+                ),
+            ), navController = navController
+        )
     }
 }

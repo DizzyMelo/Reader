@@ -1,7 +1,9 @@
 package com.study.reader.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -16,8 +18,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.study.reader.model.MBook
 import com.study.reader.utils.AppColors
 
 @Composable
@@ -89,6 +94,32 @@ fun RoundedButton(label: String = "Reading", radius: Int = 29, onClick: () -> Un
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = label, style = TextStyle(color = Color.White, fontSize = 15.sp))
+        }
+    }
+}
+
+@Composable
+fun ReadingNowArea(navController: NavController) {
+    ListCard()
+}
+
+@Composable
+fun HorizontalScrollableComponent(
+    items: List<Any>,
+    height: Dp = 280.dp,
+    onClick: (String) -> Unit = {}
+) {
+    val scrollState = rememberScrollState()
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(height)
+            .horizontalScroll(scrollState)
+    ) {
+
+        if (items.isEmpty()) return@Row
+        if (items.first() is MBook) {
+            items.forEach { book -> ListCard(book as MBook, onClick = onClick) }
         }
     }
 }

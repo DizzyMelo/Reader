@@ -43,10 +43,10 @@ fun ListCard(
         backgroundColor = Color.White,
         elevation = 6.dp,
         modifier = Modifier
-//            .padding(16.dp)
+            .padding(16.dp)
             .height(242.dp)
             .width(202.dp)
-            .clickable { onClick.invoke(book.title.toString()) }
+            .clickable { onClick.invoke(book.id.toString()) }
     ) {
         Column(
             modifier = Modifier.width(screenWidth.dp - (spacing * 2)),
@@ -55,7 +55,7 @@ fun ListCard(
         ) {
             Row(horizontalArrangement = Arrangement.Center) {
                 AsyncImage(
-                    model = "",
+                    model = "https://books.google.com/books/content?id=6P_jN6zUuMcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
                     contentDescription = "Book image",
                     modifier = Modifier
                         .height(140.dp)
