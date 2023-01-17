@@ -63,7 +63,7 @@ fun LoginScreen(navController: NavController, loginViewModel: LoginViewModel = v
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-                val secondaryActionText = if (isSignupScreen.value) "Sign up" else "Login"
+                val secondaryActionText = if (isSignupScreen.value) "Login" else "Sign up"
                 Text(text = "New User?")
                 Text(text = secondaryActionText, modifier = Modifier
                     .clickable {
