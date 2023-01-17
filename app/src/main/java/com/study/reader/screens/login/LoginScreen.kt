@@ -1,6 +1,5 @@
 package com.study.reader.screens.login
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,14 +23,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.study.reader.R
 import com.study.reader.components.AppLogo
 import com.study.reader.components.EmailInput
 import com.study.reader.components.PasswordInput
+import com.study.reader.navigation.AppScreens
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController, loginViewModel: LoginViewModel = viewModel()) {
     val isSignupScreen = rememberSaveable() {
         mutableStateOf(false)
     }
@@ -41,8 +42,19 @@ fun LoginScreen(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             AppLogo(modifier = Modifier.padding(bottom = 16.dp))
-            UserForm(loading = false, isCreateAccount = isSignupScreen.value) { email, password ->
-                Log.d("TAG", "LoginScreen: $email and $password")
+            UserForm(
+                loading = loginViewModel.loading.value!!,
+                isCreateAccount = isSignupScreen.value
+            ) { email, password ->
+                if (isSignupScreen.value) {
+                    loginViewModel.createUserWithEmailAndPassword(email, password) {
+                        navController.navigate(AppScreens.HomeScreen.name)
+                    }
+                } else {
+                    loginViewModel.signInWithEmailAndPassword(email, password) {
+                        navController.navigate(AppScreens.HomeScreen.name)
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(15.dp))
